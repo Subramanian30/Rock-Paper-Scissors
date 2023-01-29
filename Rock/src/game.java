@@ -183,17 +183,21 @@ public class game {
 
 
             user2choice= player2choice(scanner);
-            winner = chooseWinner( user1choice, user2choice , player1name, player2name);
+            if(user2choice.equalsIgnoreCase("paper") || user2choice.equalsIgnoreCase("rock") || user2choice.equalsIgnoreCase("scissors")) {
+                winner = chooseWinner(user1choice, user2choice, player1name, player2name);
 
 
+                if (winner.equals(player2name))
+                    score2 += 5;
 
-            if(winner.equals(player2name))
-            score2+=5;
-
-            else if(winner.equals(player1name))
-            score1+=5;
-
-
+                else if (winner.equals(player1name))
+                    score1 += 5;
+            }
+            else {
+                System.out.println("Wrong Input by "+player2name+" so score awarded to "+player1name);
+                System.out.println("Winner of this round is "+player1name);
+                score1 += 5;
+            }
 
             System.out.println("After Round "+stop+" scores are");
             System.out.println(player1name+" : "+score1);
